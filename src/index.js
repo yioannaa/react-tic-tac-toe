@@ -4,21 +4,26 @@ import ReactDOM from 'react-dom';
 import './index.css';
 
 const Square = (props)=>{
-  const [value, setValue] = useState(null);
   return (
     <
     button className="square"
-    onClick={()=> setValue('X')}
+    onClick={()=> {}}
     >
-      {value}
+      {props.value}
       </button>
   );
 };
 
 const Board = ()=>{
+  const initialSquares = [
+    null, null, null,
+    null, null, null,
+    null, null, null
+  ];
+  const [squares, setSquares] = useState(initialSquares);
   const renderSquare = (i)=>{
     return(
-      <Square/>
+      <Square value={squares[i]}/>
     );
   };
   return (
