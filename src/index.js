@@ -33,13 +33,12 @@ const Board = ()=>{
       />
     );
   };
+
+const status = `Next player: ${xIsNext ? 'X' : 'O'}`;
+
   return (
-    <div style={{
-      backgroundColor: 'skyblue',
-      margin: 10,
-      padding:20,
-    }}>
-      Board
+    <div>
+      <div className="status">{status}</div>
       <div className="boardRow">
       {renderSquare(0)}{renderSquare(1)}{renderSquare(2)}
       </div>
@@ -56,7 +55,7 @@ const Board = ()=>{
 const Game = () => {
   return (
     <div className="game">
-      Game
+      Tic-Tac-Toe
       <Board />
     </div>
   );
