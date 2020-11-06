@@ -7,7 +7,7 @@ const Square = (props)=>{
   return (
     <
     button className="square"
-    onClick={()=> {}}
+    onClick={props.onClickEvent}
     >
       {props.value}
       </button>
@@ -21,9 +21,18 @@ const Board = ()=>{
     null, null, null
   ];
   const [squares, setSquares] = useState(initialSquares);
+
+  const handleClickEvent = (i) => {
+    const newSquares = [...squares];
+    newSquares[i]='X';
+    setSquares(newSquares);
+  };
+
   const renderSquare = (i)=>{
     return(
-      <Square value={squares[i]}/>
+      <Square value={squares[i]}
+        onClickEvent={()=>handleClickEvent(i)}
+      />
     );
   };
   return (
@@ -34,13 +43,13 @@ const Board = ()=>{
     }}>
       Board
       <div className="boardRow">
-      {renderSquare()}{renderSquare()}{renderSquare()}
+      {renderSquare(0)}{renderSquare(1)}{renderSquare(2)}
       </div>
       <div className="boardRow">
-      {renderSquare()}{renderSquare()}{renderSquare()}
+      {renderSquare(3)}{renderSquare(4)}{renderSquare(5)}
       </div>
       <div className="boardRow">
-      {renderSquare()}{renderSquare()}{renderSquare()}
+      {renderSquare(6)}{renderSquare(7)}{renderSquare(8)}
       </div>
     </div>
   );
